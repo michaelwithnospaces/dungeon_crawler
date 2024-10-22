@@ -27,6 +27,7 @@ void printInstructions() {
 
 // do not change
 // When you pass an array to a function, it decays to a pointer to its first element
+// char** map: This is the overall "grid" or map, which is a pointer to an array of pointers (rows).
 void outputMap(char** map, const int maxRow, const int maxCol) {
     // output top border
     cout << "+";
