@@ -26,6 +26,7 @@ void printInstructions() {
 }
 
 // do not change
+// When you pass an array to a function, it decays to a pointer to its first element
 void outputMap(char** map, const int maxRow, const int maxCol) {
     // output top border
     cout << "+";
@@ -43,7 +44,7 @@ void outputMap(char** map, const int maxRow, const int maxCol) {
         for (int j = 0; j < maxCol; ++j) {
             // output current block
             cout << " ";
-            if (map[i][j] == TILE_OPEN) {
+            if (map[i][j] == TILE_OPEN) { // map[i][j] is equivalent to *(*(map + i) + j)
                 cout << " ";
             } else {
                 cout << map[i][j];
