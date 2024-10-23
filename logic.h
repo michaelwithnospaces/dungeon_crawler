@@ -86,6 +86,12 @@ char** createMap(int maxRow, int maxCol);
  * @param   maxRow      Number of rows in the dungeon table (aka height).
  * @return None
  * @update map, maxRow
+ * 
+ * Without the & (reference), you would be passing a copy of the pointer, but you could still 
+ * modify the contents at the memory locations that the pointer points to. However, you wouldn't 
+ * be able to modify the original pointer itself (i.e., where it points to), because you'd only 
+ * be working with a copy of the pointer, not the original pointer.
+ * 
  */
 void deleteMap(char**& map, int& maxRow);
 
