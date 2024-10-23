@@ -82,6 +82,7 @@ char** loadLevel(const string& fileName, int& maxRow, int& maxCol, Player& playe
 
     // Iterate through every row
     int tileCount = 0;
+    int exitCount = 0;
     for (int row = 0; row < maxRow; ++row)
     {
         for (int col = 0; col < maxCol; ++col)
@@ -99,8 +100,21 @@ char** loadLevel(const string& fileName, int& maxRow, int& maxCol, Player& playe
                 deleteMap(map, maxRow);
                 return nullptr;
             }
+
+            if (map[row][col] == TILE_DOOR || map[row][col] == TILE_EXIT)
+            {
+                exitCount++;
+            }
             tileCount++;
         }
+    }
+
+    // Check if there is at least one exit
+    if (exitCount < 1)
+    {
+        cout << "Error: No way out" << endl;
+        deleteMap(map, maxRow);
+        return nullptr;
     }
 
     // Check if the number of tiles matches maxRow * maxCol
